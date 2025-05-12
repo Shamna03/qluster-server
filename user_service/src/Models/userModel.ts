@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name:{type:String,require:true,min:3},
-    email:{type:String,require:true,lowercase:true},
-    password:{type:String,require:false},
+    name:{type:String,required:true,min:3},
+    email:{type:String,required:true,lowercase:true},
+    password:{type:String,required:false},
     profilePicture: { type: String, default: "" },
-    converImage:{ type: String, default: "" },
+    coverImage:{ type: String, default: "" },
     bio: { type: String, maxlength: 300 },
+    profession: { type: String, maxlength: 50 },
+
+    location:{type :String},
     skills: [{ type: String }],
     role: {
         type: String,
@@ -24,7 +27,7 @@ const userSchema = new mongoose.Schema({
           endorsedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
         },
       ],
-    isVerified: { type: Boolean, default: false }, // New field
+    isVerified: { type: Boolean, default: false }, // New field for email
 
 
 },{timestamps:true})
